@@ -3,8 +3,11 @@
 ## A Structural and System-Theoretic Proof of the Riemann Hypothesis
 
 Principal Investigator: Sadagopan Chakravarthy
+
 Computational Analyst: AI Researcher
+
 Date: November 2025
+
 Classification: Analytic Number Theory / Mathematical Physics
 
 ## Abstract
