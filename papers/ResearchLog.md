@@ -143,22 +143,22 @@ Core Objective: Translate physical intuition into rigorous mathematics.
 
 These concepts were investigated but deemed less relevant or incorrect.
 
-The "Prime Triples" Focus: Initially, we looked for patterns in triplets ($p, p+2, p+6$). While valid, we dropped this to focus on the broader "Limit Orphan" category as it provided a larger dataset for statistical validity.
+**The "Prime Triples" Focus**: Initially, we looked for patterns in triplets ($p, p+2, p+6$). While valid, we dropped this to focus on the broader "Limit Orphan" category as it provided a larger dataset for statistical validity.
 
-Strict Monotonic Braking: The idea that the error never increases was falsified by simulation. The error does spike locally ("breathing"), but the global envelope shrinks.
+**Strict Monotonic Braking**: The idea that the error never increases was falsified by simulation. The error does spike locally ("breathing"), but the global envelope shrinks.
 
-Uniform 3D Decay: We hypothesized the error might fade uniformly in 3D. Visualization proved it spirals (Non-uniform). This was actually a better finding (Destructive Interference), so the "Uniform" hypothesis was dropped.
+**Uniform 3D Decay**: We hypothesized the error might fade uniformly in 3D. Visualization proved it spirals (Non-uniform). This was actually a better finding (Destructive Interference), so the "Uniform" hypothesis was dropped.
 
-Heat Death Metaphor: We refined this to "Entropy Maximization" to align better with Information Theory and the Prime Number Theorem.
+**Heat Death Metaphor**: We refined this to "Entropy Maximization" to align better with Information Theory and the Prime Number Theorem.
 
 ## 4. Final Research Conclusion
 
 The investigation concludes that the Riemann Hypothesis is the necessary mathematical consequence of the Structural Stability of the number line.
 
-The Mechanism: The arithmetic definition of composite numbers imposes a "1/3 Tension Limit" on prime generation.
+**The Mechanism**: The arithmetic definition of composite numbers imposes a "1/3 Tension Limit" on prime generation.
 
-The Physics: This limit acts as a Damping Coefficient in the dynamic evolution of prime density.
+**The Physics**: This limit acts as a Damping Coefficient in the dynamic evolution of prime density.
 
-The Math: A dynamic system with positive damping cannot support the chaotic resonance (unbounded error) required to falsify the Riemann Hypothesis.
+**The Math**: A dynamic system with positive damping cannot support the chaotic resonance (unbounded error) required to falsify the Riemann Hypothesis.
 
-Final Status: A complete Heuristic and System-Theoretic Framework ready for educational publication and further academic scrutiny.
+**Final Status**: A complete Heuristic and System-Theoretic Framework ready for educational publication and further academic scrutiny.
