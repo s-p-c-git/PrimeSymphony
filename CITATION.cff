@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "[Chakravarthy]"
+  given-names: "[Sadagopan]"
+title: "Prime Symphony: The Cantilever Beam of Number Theory:- Structural Stability Analysis"
+version: 1.0.0
+date-released: 2025-11-30
+url: "https://github.com/s-p-c-git/PrimeSymphony"
+```
+
+---
+
+### 3. Step-by-Step Publishing Guide
+
+1.  **Generate the Images:** Run the `visualizations.py` script locally first. It will create the `.png` files. Move them into the `images/` folder.
+2.  **Create the Documents:** Save the **Master Treatise** we generated earlier as `papers/PrimeSymphonyProof.md`.
+3.  **Initialize Git:**
+    ```bash
+    git init
+    git add .
+    git commit -m "Initial release of PrimeSymphony: Cantilever Beam Theory"
