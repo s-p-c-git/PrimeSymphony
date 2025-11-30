@@ -211,12 +211,6 @@ Our investigation revealed striking structural similarities to the physical laws
 
 The behavior of prime numbers on the number line mirrors the behavior of matter in the expanding universe.
 
-I have extracted the "Cosmology: The Architecture of Expansion" section from the Canvas document and formatted it as the requested Markdown table below.
-
-### A. Cosmology: The Architecture of Expansion
-
-The behavior of prime numbers on the number line mirrors the behavior of matter in the expanding universe.
-
 | Cosmological Concept | Number Theory Equivalent | The Parallel |
 | :--- | :--- | :--- |
 | **The Big Bang** | **The Origin (0 and 1)** | The number line begins with infinite density. As numbers get larger ($x \to \infty$), the density of primes thins out according to the **Prime Number Theorem** ($1 / \ln x$), mirroring the **Metric Expansion of Space** where matter density decreases over time. |
