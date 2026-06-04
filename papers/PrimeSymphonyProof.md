@@ -25,7 +25,7 @@ $$
 P = 2 + \left(\prod_{q \in S} q\right)k
 $$
 
-where $S$ is a finite set of prior primes and $k$ is chosen so the resulting value avoids divisibility by those primes and remains prime. This is used here as a structural construction principle, not a closed-form enumeration of all primes.
+where $S$ is a finite set of prior primes and $k$ is selected by sieving residue classes so the resulting value avoids divisibility by each $q \in S$ and remains prime. This is used here as a structural construction principle, not a closed-form enumeration of all primes.
 
 This creates an unbreakable link between a prime and its ancestors. To build a new prime, you must use the building blocks of the past. This "Yielding" process is the manufacturing process of the number line.
 
