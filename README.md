@@ -37,7 +37,9 @@ To verify the findings and regenerate the charts:
 
 2. Run the simulation:
 
-       python src/simulation.py
+       python src/visualizations.py
+
+3. Or trigger the GitHub Actions workflow **Generate visualization images** to regenerate and validate figure outputs in `images/`.
 
 
 ## 📜 Citation
