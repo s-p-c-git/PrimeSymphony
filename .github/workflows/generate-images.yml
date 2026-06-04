@@ -16,6 +16,9 @@ on:
 jobs:
   generate-images:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
 
     steps:
       - name: Checkout repository
