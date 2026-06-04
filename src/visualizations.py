@@ -1,3 +1,6 @@
+import os
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -11,16 +14,22 @@ import matplotlib.patches as patches
 import warnings
 warnings.filterwarnings('ignore')
 
+OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'images')
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+def _img_path(filename):
+    return os.path.join(OUTPUT_DIR, filename)
+
 print("Initializing Master Visualization Engine for The Cantilever Beam Project...")
 
 # --- 1. SHARED DATA GENERATOR ---
 def generate_data(limit=200000):
     sieve = np.ones(limit + 1, dtype=bool)
-    sieve = sieve[1] = False
+    sieve[0] = sieve[1] = False
     for i in range(2, int(limit**0.5) + 1):
         if sieve[i]: sieve[i*i:limit+1:i] = False
             
-    orphans, tensions, primes =,,
+    orphans, tensions, primes = [], [], []
     for p in range(11, limit):
         if sieve[p]:
             primes.append(p)
@@ -38,7 +47,7 @@ def generate_data(limit=200000):
 def img1_3d_spiral():
     print("Generating Image 1: 3D Prime Spiral...")
     limit = 8000
-    xs, ys, zs, px, py, pz =,,,,,
+    xs, ys, zs, px, py, pz = [], [], [], [], [], []
     sieve = np.ones(limit+1, dtype=bool)
     for i in range(2, int(limit**0.5)+1): 
         if sieve[i]: sieve[i*i::i]=False
@@ -55,7 +64,7 @@ def img1_3d_spiral():
     ax.scatter(px, py, pz, c='red', s=10, depthshade=False)
     ax.set_title("Figure 1: The 3D Prime Spiral")
     ax.view_init(elev=30, azim=-60)
-    plt.savefig("Image_1_3D_Spiral.png", dpi=300)
+    plt.savefig(_img_path("Image_1_3D_Spiral.png"), dpi=300)
     plt.close()
 
 def img2_beam_schematic():
@@ -74,7 +83,7 @@ def img2_beam_schematic():
     ax.set_xlim(-2, 12); ax.set_ylim(0, 9)
     ax.axis('off')
     plt.title("Figure 2: The Cantilever Beam Model", fontsize=16)
-    plt.savefig("Image_2_Beam.png", dpi=300)
+    plt.savefig(_img_path("Image_2_Beam.png"), dpi=300)
     plt.close()
 
 def img3_tension_tail():
@@ -85,14 +94,14 @@ def img3_tension_tail():
     plt.axvline(0.333, color='red', linestyle='--', linewidth=3, label='1/3 Limit')
     plt.title("Figure 3: Tension Tail", fontsize=16)
     plt.legend(fontsize=14)
-    plt.savefig("Image_3_Tension.png", dpi=300)
+    plt.savefig(_img_path("Image_3_Tension.png"), dpi=300)
     plt.close()
 
 def img4_stability_decay():
     print("Generating Image 4: Stability & Decay...")
     _, orphans, _ = generate_data(limit=200000)
     checkpoints = np.linspace(10000, 200000, 500).astype(int)
-    ratios =
+    ratios = []
     for cp in checkpoints:
         act = np.searchsorted(orphans, cp)
         mod = cp/(np.log(cp)**2)
@@ -107,7 +116,7 @@ def img4_stability_decay():
     ax2.plot(checkpoints, errors, color='blue', alpha=0.5)
     ax2.set_yscale('log')
     ax2.set_title("Error Decay", fontsize=14)
-    plt.savefig("Image_4_Stability_Decay.png", dpi=300)
+    plt.savefig(_img_path("Image_4_Stability_Decay.png"), dpi=300)
     plt.close()
 
 def img5_gravity_well():
@@ -121,7 +130,7 @@ def img5_gravity_well():
     ax.set_zlim(-5, 0)
     ax.set_title("Figure 5: Gravity Well of Highly Composite Numbers", fontsize=14)
     ax.axis('off')
-    plt.savefig("Image_5_Gravity_Well.png", dpi=300)
+    plt.savefig(_img_path("Image_5_Gravity_Well.png"), dpi=300)
     plt.close()
 
 def img6_quantum_levels():
@@ -135,7 +144,7 @@ def img6_quantum_levels():
     ax.set_xlim(0, 100)
     ax.get_yaxis().set_visible(False)
     ax.set_title("Figure 6: Quantum Energy Levels (Riemann Zeros)", color='white', fontsize=16)
-    plt.savefig("Image_6_Quantum.png", dpi=300, bbox_inches='tight')
+    plt.savefig(_img_path("Image_6_Quantum.png"), dpi=300, bbox_inches='tight')
     plt.close()
 
 def img7_cosmic_web():
@@ -147,7 +156,7 @@ def img7_cosmic_web():
     ax.set_facecolor('white')
     ax.set_title("Figure 7: Modular Filaments (Cosmic Web)", fontsize=14)
     ax.axis('off')
-    plt.savefig("Image_7_Cosmic_Web.png", dpi=300)
+    plt.savefig(_img_path("Image_7_Cosmic_Web.png"), dpi=300)
     plt.close()
 
 def img8_laplace():
@@ -165,7 +174,7 @@ def img8_laplace():
     
     ax2.plot(t, y, color='blue', linewidth=2)
     ax2.set_title("Impulse Response", fontsize=14)
-    plt.savefig("Image_8_Laplace.png", dpi=300)
+    plt.savefig(_img_path("Image_8_Laplace.png"), dpi=300)
     plt.close()
 
 def img9_mirror_effect():
@@ -181,7 +190,7 @@ def img9_mirror_effect():
     plt.title("Figure 9: The Mirror Effect (Coupling)", fontsize=16)
     plt.xlabel("Error Class 1", fontsize=14); plt.ylabel("Error Class 2", fontsize=14)
     plt.legend(fontsize=14)
-    plt.savefig("Image_9_Coupling.png", dpi=300)
+    plt.savefig(_img_path("Image_9_Coupling.png"), dpi=300)
     plt.close()
 
 def img10_3d_vortex():
@@ -193,7 +202,7 @@ def img10_3d_vortex():
     ax = fig.add_subplot(111, projection='3d')
     ax.plot(x,y,z, color='blue', linewidth=2)
     ax.set_title("Figure 10: 3D Error Vortex", fontsize=16)
-    plt.savefig("Image_10_Vortex.png", dpi=300)
+    plt.savefig(_img_path("Image_10_Vortex.png"), dpi=300)
     plt.close()
 
 def img11_spectral():
@@ -205,7 +214,7 @@ def img11_spectral():
     plt.figure(figsize=(12, 7))
     plt.plot(xf, np.abs(yf[:500]), color='darkblue', linewidth=2)
     plt.title("Figure 11: Spectral Analysis", fontsize=16)
-    plt.savefig("Image_11_Spectral.png", dpi=300)
+    plt.savefig(_img_path("Image_11_Spectral.png"), dpi=300)
     plt.close()
 
 def img12_redshift():
@@ -216,7 +225,7 @@ def img12_redshift():
     plt.plot(x, norm_error, color='#ffb84d', alpha=0.8)
     plt.axhline(0, color='black', linewidth=1.5)
     plt.title("Figure 12: Redshift Correction", fontsize=16)
-    plt.savefig("Image_12_Redshift.png", dpi=300)
+    plt.savefig(_img_path("Image_12_Redshift.png"), dpi=300)
     plt.close()
 
 if __name__ == "__main__":
