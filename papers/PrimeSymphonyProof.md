@@ -19,13 +19,13 @@ We begin by establishing the deterministic nature of prime generation. Primes ar
 
 ### The Yielding Formula
 
-Every prime number $P$ ($P>3$) can be expressed as:
+Every prime number $P$ ($P>3$; the base primes $2$ and $3$ are excluded) can be expressed as:
 
 $$
 P = 2 + \left(\prod_{q < P,\ q\ \text{prime}} q\right)k
 $$
 
-for an integer $k$ constrained by primality conditions.
+for an integer $k$ such that $P$ avoids divisibility by all smaller primes and remains prime.
 
 This creates an unbreakable link between a prime and its ancestors. To build a new prime, you must use the building blocks of the past. This "Yielding" process is the manufacturing process of the number line.
 
@@ -68,7 +68,7 @@ $$
 
 ### Proof
 
-Since $P$ is an Orphan, $P-2$ is composite and odd. The smallest factor of an odd composite is 3. To maximize tension, we minimize the small factor ($3$). Thus, $\tau \le 1/3$. Q.E.D.
+Since $P$ is an Orphan, $P-2$ is composite and odd. The smallest factor of an odd composite is 3. To maximize tension, we minimize the small factor ($3$). Thus, $\tau \le 1/3$.
 
 ![Figure 3](Fig3_Tension.png)
 
