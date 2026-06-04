@@ -25,7 +25,7 @@ $$
 P = 2 + \left(\prod_{q \in S} q\right)k
 $$
 
-where $S$ is a finite set of prior primes and $k$ is selected by sieving residue classes so the resulting value avoids divisibility by each $q \in S$ and remains prime. This is used here as a structural construction principle, not a closed-form enumeration of all primes.
+where $S$ is a finite set of prior primes and $k$ is selected by sieving residue classes so the resulting value avoids divisibility by each $q \in S$ and remains prime. This manuscript uses the relation as a structural ansatz for candidate construction; it is not claimed as a unique closed-form characterization of all primes.
 
 This creates an unbreakable link between a prime and its ancestors. To build a new prime, you must use the building blocks of the past. This "Yielding" process is the manufacturing process of the number line.
 
@@ -68,7 +68,11 @@ $$
 
 ### Proof
 
-Since $P$ is an Orphan, $P-2$ is composite and odd. The smallest factor of an odd composite is 3. To maximize tension, we minimize the small factor ($3$). Thus, $\tau \le 1/3$.
+Since $P$ is an Orphan, $P-2$ is composite and odd. Let $P-2=3q$ with $q$ integer; then
+$$
+\tau(P-2)=\frac{\operatorname{LPF}(P-2)}{P-2}=\frac{q}{3q}=\frac13.
+$$
+Because 3 is the smallest odd factor, this is the maximum attainable tension, so $\tau \le 1/3$.
 
 ![Figure 3](Fig3_Tension.png)
 
