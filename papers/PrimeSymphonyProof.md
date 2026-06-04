@@ -19,13 +19,13 @@ We begin by establishing the deterministic nature of prime generation. Primes ar
 
 ### The Yielding Formula
 
-Every prime number $P$ ($P>3$; the base primes $2$ and $3$ are excluded) can be expressed as:
+Within this framework, prime candidates for $P>3$ are modeled in the yielded form:
 
 $$
-P = 2 + \left(\prod_{q < P,\ q\ \text{prime}} q\right)k
+P = 2 + \left(\prod_{q \in S} q\right)k
 $$
 
-for an integer $k$ such that $P$ avoids divisibility by all smaller primes and remains prime.
+where $S$ is a finite set of prior primes and $k$ is chosen so the resulting value avoids divisibility by those primes and remains prime. This is used here as a structural construction principle, not a closed-form enumeration of all primes.
 
 This creates an unbreakable link between a prime and its ancestors. To build a new prime, you must use the building blocks of the past. This "Yielding" process is the manufacturing process of the number line.
 
