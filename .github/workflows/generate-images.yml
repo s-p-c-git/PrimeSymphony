@@ -1,0 +1,60 @@
+name: Generate visualization images
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "src/visualizations.py"
+      - "requirements.txt"
+      - ".github/workflows/generate-images.yml"
+  pull_request:
+    paths:
+      - "src/visualizations.py"
+      - "requirements.txt"
+      - ".github/workflows/generate-images.yml"
+
+jobs:
+  generate-images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate figures
+        run: python src/visualizations.py
+
+      - name: Verify required figures exist
+        run: |
+          required=(
+            "Fig1_3D_Spiral.png"
+            "Fig2_Beam_Schematic.png"
+            "Fig3_Tension.png"
+            "Fig4_Stability.png"
+            "Fig5_Black_Hole.png"
+            "Fig6_Quantum_Spectrum.png"
+            "Fig7_Cosmic_Web.png"
+            "Fig8_Laplace_Proof.png"
+            "Fig9_Coupling.png"
+            "Fig10_3D_Vortex.png"
+            "Fig11_Spectral_Analysis.png"
+            "Fig12_Redshift.png"
+          )
+
+          for image in "${required[@]}"; do
+            test -f "images/${image}"
+          done
+
+      - name: Upload generated images artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-images
+          path: images/*.png
