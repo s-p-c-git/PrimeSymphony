@@ -40,6 +40,31 @@ To verify the findings and regenerate the charts:
        python src/simulation.py
 
 
+## Shifted-Prime Tension
+
+The [`shifted-prime-tension/`](shifted-prime-tension/) subproject proves a
+classification of the shifted-prime smallest-factor classes
+`S_k(q) = {p : spf(p+k) = q}` via splitting in the quadratic fields `Q(√d_q)`, with
+the canonical case `k=2` identifying the "limit orphans" as exactly the primes that
+split in `Z[ω]`. It pairs this classification with a Dirichlet-series decomposition of
+the tension function `T_k(p) = 1/spf(p+k)` and a spectral verification tying the prime
+error term to the nontrivial zeros of `ζ(s)` and `L(s, χ₋₃)`.
+
+**Key result.** A rigorous Turing's-method (argument-principle) computation verifies
+that all zeros of `ζ(s)` and `L(s, χ₋₃)` with `|Im s| < 60` lie on the critical line
+`Re(s) = 1/2` (winding numbers 26 and 44; Theorem 5.2). This is a *bounded*
+verification and makes no claim toward proving the Riemann Hypothesis.
+
+The reproducible pipeline covers all of it: classification + period-6 law (step0/step1),
+MCMC density fit `π_O/π → 1/2` with decay exponent δ ≈ 0.51 (step2), FFT spectral match
+of the error term to both zero families (step3), the rigorous Turing's-method box
+(step4), and a primes-to-zeros Newton refinement (step5). It adds two dependencies
+beyond this repo's base set — `mpmath` and `sympy` (see
+`shifted-prime-tension/requirements.txt`).
+
+See [`shifted-prime-tension/README.md`](shifted-prime-tension/README.md) for the full
+result table and step-by-step reproduction commands.
+
 ## 📜 Citation
 
 If you use this framework in your research, please cite it using the CITATION.cff file provided.
