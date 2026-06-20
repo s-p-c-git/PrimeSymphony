@@ -11,16 +11,21 @@ import matplotlib.patches as patches
 import warnings
 warnings.filterwarnings('ignore')
 
+# NOTE: This script renders the *illustrative* figures for the exploratory
+# cantilever-beam essay (papers/PrimeSymphonyProof.md). Several plots use
+# synthetic / random data (np.random) and are schematic metaphors, not derived
+# numerical results. For the rigorous, reproducible pipeline see
+# ../shifted-prime-tension/.
 print("Initializing Master Visualization Engine for The Cantilever Beam Project...")
 
 # --- 1. SHARED DATA GENERATOR ---
 def generate_data(limit=200000):
     sieve = np.ones(limit + 1, dtype=bool)
-    sieve = sieve[1] = False
+    sieve[0] = sieve[1] = False
     for i in range(2, int(limit**0.5) + 1):
         if sieve[i]: sieve[i*i:limit+1:i] = False
-            
-    orphans, tensions, primes =,,
+
+    orphans, tensions, primes = [], [], []
     for p in range(11, limit):
         if sieve[p]:
             primes.append(p)
@@ -38,7 +43,7 @@ def generate_data(limit=200000):
 def img1_3d_spiral():
     print("Generating Image 1: 3D Prime Spiral...")
     limit = 8000
-    xs, ys, zs, px, py, pz =,,,,,
+    xs, ys, zs, px, py, pz = [], [], [], [], [], []
     sieve = np.ones(limit+1, dtype=bool)
     for i in range(2, int(limit**0.5)+1): 
         if sieve[i]: sieve[i*i::i]=False
@@ -92,7 +97,7 @@ def img4_stability_decay():
     print("Generating Image 4: Stability & Decay...")
     _, orphans, _ = generate_data(limit=200000)
     checkpoints = np.linspace(10000, 200000, 500).astype(int)
-    ratios =
+    ratios = []
     for cp in checkpoints:
         act = np.searchsorted(orphans, cp)
         mod = cp/(np.log(cp)**2)

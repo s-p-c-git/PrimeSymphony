@@ -28,6 +28,22 @@ at scale to ζ(s) alone. The contribution is the systematic shifted-prime
 classification and the Dirichlet decomposition, positioned as a variant of the
 Alladi (1977) smallest-prime-factor program.
 
+## Proven Tier-1 Results
+
+Elementary refinements of the orphan/tension picture (singular-series and
+handedness results). Reproduced at N = 5×10⁶; verified, no maths altered.
+
+| Result | Statement | Status | Script |
+|---|---|---|---|
+| **DD1** — singular-series tension law | `frac(spf(p+2)=q) = (1/(q−1))·∏_{3≤r<q}(r−2)/(r−1)`, a Hardy–Littlewood singular series (measured/predicted within ~1% over 348,510 primes) | Proved (elementary) | `tier1_deep_dives` |
+| **DD2** — exactly-one-maximum / handedness | every isolated prime has `spf=3` on **exactly one** side; the side is fixed by `p mod 3` (right-handed if `p≡1`, left-handed if `p≡2`). Both-at-3 and neither-at-3 are impossible | Proved (elementary) | `tier1_deep_dives` |
+| **LO3** — free-side distribution | the non-forced side follows the DD1 series with the `r=3` factor removed and renormalised; shape exact (residual <1.5%), prefactor ≈1.24 is pure normalisation | Verified | `tier1_leftovers` |
+| **LO4** — sum check | `Σ_q frac(spf(p+2)=q)` + twin fraction → 1 (measured `0.9027 + 0.0931 = 0.9959`, slow tail) | Verified | `tier1_leftovers` |
+
+For the standing framing, guardrails (ESTABLISHED / OPEN / SPECULATIVE), and the
+full six-lens synthesis, see [`docs/PRIME_RESEARCH_CONTEXT.md`](docs/PRIME_RESEARCH_CONTEXT.md)
+and [`docs/PRIME_RESEARCH_SYNTHESIS.md`](docs/PRIME_RESEARCH_SYNTHESIS.md).
+
 ## Setup
 
 ```bash
@@ -84,11 +100,16 @@ shifted-prime-tension/
 │   ├── step2_density_mcmc.py
 │   ├── step3_fft_spectrum.py
 │   ├── step4_turing_box.py
-│   └── step5_newton_pipeline.py
+│   ├── step5_newton_pipeline.py
+│   ├── tier1_deep_dives.py   # DD1 singular-series law, DD2 handedness theorem
+│   └── tier1_leftovers.py    # LO3 free-side distribution, LO4 sum check
 ├── figures/                  # generated plots
+│   ├── density_convergence.png, spectrum.png, heatmap_strip.png, three_directions.png
+│   ├── fig_classification_grid.png   # T_k split/inert/empty grid (period-6 visible)
+│   └── fig_newton_convergence.png    # FFT-seeded Newton convergence
 ├── data/                     # generated .npy arrays (created on run)
 ├── paper/                    # LaTeX source (add separately)
-└── docs/                     # notes
+└── docs/                     # PRIME_RESEARCH_CONTEXT.md, PRIME_RESEARCH_SYNTHESIS.md
 ```
 
 ## Key mathematical facts (verified in code)
@@ -100,8 +121,10 @@ shifted-prime-tension/
 - **Dedekind factorisation**: `ζ_{Q(√−3)}(s) = ζ(s)·L(s,χ₋₃)`, visible as the
   equal-weight superposition of two zero families in the error-term FFT.
 
-## Acknowledgments
+## Author & Acknowledgments
+
+**Author:** Sadagopan Chakravarthy — ORCID: [0009-0004-6166-9864](https://orcid.org/0009-0004-6166-9864).
 
 Computational assistance (numerical verification, code generation, literature
-scoping) was provided by Claude (Anthropic). All mathematical claims and proofs
-are the responsibility of the author.
+scoping) was provided by Claude (Anthropic), credited as an assistant, not as an
+author. All mathematical claims and proofs are the responsibility of the author.
