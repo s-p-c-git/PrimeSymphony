@@ -108,7 +108,7 @@ shifted-prime-tension/
 │   ├── fig_classification_grid.png   # T_k split/inert/empty grid (period-6 visible)
 │   └── fig_newton_convergence.png    # FFT-seeded Newton convergence
 ├── data/                     # generated .npy arrays (created on run)
-├── paper/                    # LaTeX source (add separately)
+├── paper/                    # LaTeX source + figures (main.tex, 3 PNGs)
 └── docs/                     # PRIME_RESEARCH_CONTEXT.md, PRIME_RESEARCH_SYNTHESIS.md
 ```
 
@@ -120,6 +120,20 @@ shifted-prime-tension/
   `q = 3,5,7,11,13,17,19` (see `step1` docstring / paper Lemma 3.2).
 - **Dedekind factorisation**: `ζ_{Q(√−3)}(s) = ζ(s)·L(s,χ₋₃)`, visible as the
   equal-weight superposition of two zero families in the error-term FFT.
+
+## Paper
+
+`paper/main.tex` is the compile-ready LaTeX source (expository framing, builds to
+~6 pages with `pdflatex`). Figures live in `paper/figures/`. The bibliography is
+embedded (`thebibliography`), so no separate `.bib` file is needed.
+
+To compile (requires TeX Live or equivalent):
+
+```bash
+cd paper
+pdflatex -interaction=nonstopmode main.tex
+pdflatex -interaction=nonstopmode main.tex   # twice for references
+```
 
 ## Author & Acknowledgments
 
