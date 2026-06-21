@@ -14,3 +14,7 @@ shifted-prime-tension/paper/*.aux
 shifted-prime-tension/paper/*.log
 shifted-prime-tension/paper/*.out
 shifted-prime-tension/paper/*.pdf
+shifted-prime-tension/paper/*.bbl
+shifted-prime-tension/paper/*.fls
+shifted-prime-tension/paper/*.fdb_latexmk
+shifted-prime-tension/paper/arxiv-submission.tar.gz
