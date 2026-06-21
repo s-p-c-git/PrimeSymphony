@@ -108,7 +108,7 @@ shifted-prime-tension/
 │   ├── fig_classification_grid.png   # T_k split/inert/empty grid (period-6 visible)
 │   └── fig_newton_convergence.png    # FFT-seeded Newton convergence
 ├── data/                     # generated .npy arrays (created on run)
-├── paper/                    # LaTeX source + figures (main.tex, 3 PNGs)
+├── paper/                    # LaTeX source + figures (main.tex, 5 PNGs)
 └── docs/                     # PRIME_RESEARCH_CONTEXT.md, PRIME_RESEARCH_SYNTHESIS.md
 ```
 
@@ -124,8 +124,8 @@ shifted-prime-tension/
 ## Paper
 
 `paper/main.tex` is the compile-ready LaTeX source (expository framing, builds to
-~6 pages with `pdflatex`). Figures live in `paper/figures/`. The bibliography is
-embedded (`thebibliography`), so no separate `.bib` file is needed.
+~8 pages with `pdflatex`). The five figures live in `paper/figures/`. The
+bibliography is embedded (`thebibliography`), so no separate `.bib` file is needed.
 
 To compile (requires TeX Live or equivalent):
 
