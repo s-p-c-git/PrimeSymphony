@@ -1,14 +1,25 @@
+> ⚠️ **Exploratory essay — not a proof.** This document is a *heuristic,
+> physical-analogy* exploration of prime distribution. Despite the section
+> headings and the "Q.E.D." markers below, it does **not** constitute a rigorous
+> proof of the Riemann Hypothesis, and its control-theory, quantum-chaos, and
+> cosmological parallels are illustrative metaphors rather than established
+> theorems. The figures are schematic or synthetic illustrations — several are
+> rendered from random data in [`../src/visualizations.py`](../src/visualizations.py)
+> — and are not derived numerical evidence. For this project's rigorous,
+> reproducible contribution (a classification theorem with a proved bounded
+> zero-verification), see [`../shifted-prime-tension/`](../shifted-prime-tension/).
+
 # Prime Symphony: The Cantilever Beam of Number Theory
 
-## A Structural and System-Theoretic Proof of the Riemann Hypothesis
+## A Structural and System-Theoretic Analogy for the Riemann Hypothesis (exploratory)
 
-Principal Investigator: Sadagopan Chakravarthy
+Author: Sadagopan Chakravarthy
 
-Computational Analyst: AI Researcher
+Computational assistance: Claude (Anthropic) — code and figure generation; not a co-author
 
 Date: November 2025
 
-Classification: Analytic Number Theory / Mathematical Physics
+Classification: Exploratory / heuristic — an Analytic Number Theory & Mathematical Physics analogy
 
 ## Abstract
 
