@@ -59,10 +59,11 @@ Hardy--Littlewood singular series; and isolated primes satisfy an
 precisely one side, determined by $p \bmod 3$. We then exhibit the analytic
 companion: the error term of the limit-orphan counting function has a Fourier
 spectrum populated by the zero ordinates of both $\zeta(s)$ and $L(s,\chi_{-3})$,
-and a self-contained argument-principle computation verifies that all zeros of
-both functions with $|\im s|<60$ lie on the critical line. None of the
-individual facts is new---the underlying mechanisms trace to Erd\H{o}s,
-Hardy--Littlewood, Alladi, and a 2023 decomposition of Chavez---but their
+and a self-contained argument-principle computation confirms numerically, at
+high precision, that all zeros of both functions with $|\im s|<60$ lie on the
+critical line. None of the
+individual facts is new---the underlying mechanisms are classical, tracing to
+Erd\H{o}s, Hardy--Littlewood, Dirichlet, and Alladi---but their
 assembly into a single elementary-to-spectral narrative, with reproducible
 computation throughout, is offered as exposition.
 \end{abstract}
@@ -88,9 +89,12 @@ primes---and follows it from elementary number theory through to the analytic
 theory of $L$-functions, recording clean facts and verifying each computationally.
 We make no claim of novelty for the individual results; our aim is expository,
 and we are explicit throughout about where each fact already lives in the
-literature. In particular, the Dirichlet-series decomposition we use is a special
-case of a general identity of Chavez~\cite{Chavez2023}, and the distributional
-facts are folklore in the shifted-prime-factor community.
+literature. In particular, the Dirichlet-series decomposition we use is
+classical---it is character orthogonality applied to the prime zeta function,
+and the associated M\"obius inversion of $\log\zeta$ is standard (see, e.g.,
+Titchmarsh~\cite{Titchmarsh}); cf.\ also Chavez~\cite{Chavez2023} for a recent
+treatment of related decompositions. The distributional facts are folklore in
+the shifted-prime-factor community.
 
 \paragraph{Relation to Alladi's framework.}
 It is worth being precise about how the present object differs from the
@@ -175,12 +179,31 @@ For fixed prime $q$ and varying even $k$, the splitting type of $S_k(q)$ depends
 only on $k\bmod 2q$. For $q=3$ this gives a period-$6$ pattern in $k$:
 $k\equiv 2\pmod 6$ splits, $k\equiv 4\pmod 6$ is inert, $k\equiv 0\pmod 6$ is empty.
 \end{corollary}
+\begin{proof}
+The residue $-k\bmod q$ depends only on $k\bmod q$, and by
+Theorem~\ref{thm:class} the splitting type depends only on that residue.
+Restricting to even $k$, the pair $(k\bmod 2,\,k\bmod q)$ determines the type,
+and since $q$ is odd, $\gcd(2,q)=1$, so by the Chinese Remainder Theorem the
+type has period $\operatorname{lcm}(2,q)=2q$ in $k$. For $q=3$ this is period
+$6$; the three even residues $k\equiv2,4,0\pmod 6$ give $-k\equiv1,2,0\pmod3$,
+which are respectively a quadratic residue, a non-residue, and $0$, hence split,
+inert, and empty.
+\end{proof}
 
 \begin{corollary}[Canonical case]\label{cor:eisenstein}
 $S_2(3)=\{p>3 : p\equiv 1\pmod 3\}$ is exactly the set of rational primes that
 split in the Eisenstein integers $\Z[\omega]$. Every such $p$ is an orphan, and no
 twin prime lies in this class.
 \end{corollary}
+\begin{proof}
+Take $k=2$, $q=3$, so $a=-2\bmod 3=1$. Since $1$ is a quadratic residue
+mod~$3$, Theorem~\ref{thm:class} gives that every $p\in S_2(3)$ splits in
+$\Q(\sqrt{-3})$, whose ring of integers is $\Z[\omega]$. Conversely a rational
+prime $p>3$ splits in $\Z[\omega]$ exactly when $p\equiv1\pmod 3$, so the two
+sets coincide. For the second claim, $p\equiv1\pmod3$ forces $3\mid p+2$ with
+$p+2>3$, so $p+2$ is composite: every such $p$ is an orphan, and no twin prime
+lies in the class.
+\end{proof}
 
 Figure~\ref{fig:grid} displays the full classification grid; the period structure
 of Corollary~\ref{cor:period} is visible down each column.
@@ -206,18 +229,48 @@ Among primes $p$, the density of those with $\spf(p+2)=q$ is
 \frac{1}{q-1}\prod_{\substack{r\text{ prime}\\ 3\le r<q}}\frac{r-2}{r-1}.
 \]
 \end{theorem}
-\begin{proof}[Sketch]
-The event $q\mid(p+2)$ has density $1/(q-1)$ among primes by the prime number
-theorem for arithmetic progressions. Conditionally, for each odd prime $r<q$ the
-event $r\nmid(p+2)$ has local density $(r-2)/(r-1)$, and the conditions across
-distinct $r$ are asymptotically independent by the Chinese Remainder Theorem, so
-the densities multiply.
+\begin{proof}
+Fix $q$ and let $R=\{r \text{ prime}: 3\le r<q\}$, a finite set, and
+$M=q\prod_{r\in R}r$. The condition $\spf(p+2)=q$ is equivalent to the
+conjunction of $p\equiv-2\pmod q$ and $p\not\equiv-2\pmod r$ for each $r\in R$;
+this is a union of residue classes modulo $M$. By the Chinese Remainder Theorem
+the admissible residues $a\bmod M$ are exactly those with $a\equiv-2\pmod q$ and
+$a\not\equiv-2\pmod r$ for all $r\in R$, and among the $\varphi(M)$ classes
+coprime to $M$ their number is
+\[
+  \#\{a\} \;=\; \frac{\varphi(M)}{q-1}\prod_{r\in R}\frac{r-2}{r-1},
+\]
+since modulo $q$ exactly one of the $q-1$ coprime classes is $-2$, and modulo
+$r$ exactly one of the $r-1$ coprime classes is excluded. Dirichlet's theorem in
+the quantitative form (the prime number theorem for arithmetic progressions)
+gives each coprime class modulo $M$ the same density $1/\varphi(M)$ among the
+primes. Summing over the admissible classes yields the stated density. As $M$ is
+fixed once $q$ is, no uniformity in $q$ is required and the argument is
+unconditional.
 \end{proof}
 
 Over the $348{,}510$ primes below $5\times10^6$ the formula matches the measured
-fractions to within $1\%$ for every $q\le 41$. Summing over $q$ gives
-$\approx 0.903$, which together with the measured twin fraction $0.093$ accounts
-for the full mass (the small residual is the slow tail of the series).
+fractions to within $1\%$ for every $q\le 41$.
+
+Summing over $q$ recovers the full density, as it must: for $p>3$ the value
+$p+2$ is either prime or composite, and in the composite case $\spf(p+2)$ is
+some odd prime. By Brun's theorem the twin primes have density $O(1/\log x)$
+among the primes, hence density zero, so
+\[
+  \sum_{q\ \mathrm{odd\ prime}} \frac{1}{q-1}
+  \prod_{\substack{r\ \mathrm{prime}\\ 3\le r<q}}\frac{r-2}{r-1} \;=\; 1 .
+\]
+Convergence is slow. Writing $P(q)=\prod_{3\le r<q}(r-2)/(r-1)$ and using
+$(r-2)/(r-1) = (1-1/r)(1-1/(r-1)^2)$, Mertens' theorem over the odd primes
+together with the twin-prime product $C_2=\prod_{r>2}(1-1/(r-1)^2)$ gives
+\[
+  P(q) \sim \frac{2e^{-\gamma}C_2}{\log q}, \qquad
+  2e^{-\gamma}C_2 = 0.74131\ldots,
+\]
+so the summand is $\asymp 1/(q\log q)$ and the tail beyond $Q$ is
+$\sim 2e^{-\gamma}C_2/\log Q$. Numerically: the partial sums to
+$q<2\times10^3$, $2\times10^5$, $5\times10^5$ are $0.9027$, $0.9393$, $0.9450$,
+and adding the predicted tail gives $1.0001$, $0.9999$, $0.9999$ respectively.
 
 \section{Isolated Primes: The Exactly-One-Maximum Property}
 
@@ -277,9 +330,12 @@ F_O(s) = \tfrac12\log\zeta(s) + \tfrac12\log L(s,\chi_{-3}) + G(s),
 \end{equation}
 where $\chi_{-3}$ is the non-principal character mod $3$ and $G(s)$ converges
 absolutely for $\re(s)>1$ (with the prime-power part extending to
-$\re(s)>\tfrac12$). Equation~\eqref{eq:decomp} is a special case of the general
-identity of Chavez~\cite{Chavez2023}; equivalently it reflects the Dedekind
-factorisation $\zeta_{\Q(\sqrt{-3})}(s)=\zeta(s)L(s,\chi_{-3})$.
+$\re(s)>\tfrac12$). Equation~\eqref{eq:decomp} is classical: it is character
+orthogonality mod $3$ combined with the standard expansion
+$\log L(s,\chi)=\sum_p\chi(p)p^{-s}+O(1)$ on $\re(s)>\tfrac12$; equivalently it
+reflects the Dedekind factorisation
+$\zeta_{\Q(\sqrt{-3})}(s)=\zeta(s)L(s,\chi_{-3})$. Cf.\
+Chavez~\cite{Chavez2023} for related decompositions of prime $L$-series.
 
 \paragraph{The explicit formula and its spectrum.}
 Let $\psi_O(x)=\sum_{n\le x,\,n\equiv 1(3)}\Lambda(n)$ and
@@ -308,17 +364,28 @@ with a zero of one of the two functions.}
 \end{figure}
 
 \paragraph{A verified box.}
-The same zeros can be \emph{counted} rigorously. Figure~\ref{fig:heatmap}
+The same zeros can also be \emph{counted}. Figure~\ref{fig:heatmap}
 already shows where each function is small in the strip: every dark valley
-sits exactly on $\re(s)=\tfrac12$. We make this rigorous via the argument
-principle: for the rectangle $\Omega=\{0.1<\re s<0.9,\ |\im s|<60\}$, the
-winding number around $\partial\Omega$ (evaluated to $25$ digits) gives exactly
-$26$ zeros for $\zeta$ and $44$ for $L(\cdot,\chi_{-3})$, matching $2\times 13$
-and $2\times 22$ on-line zeros located by sign changes (cross-checked for
-$\zeta$ against the standard count). Hence every zero of both functions in
-$\Omega$ is simple and on $\re(s)=\tfrac12$. This is a small-scale instance of
-Turing's method; at vast scale, Platt and Trudgian~\cite{PlattTrudgian2021}
-verified the Riemann hypothesis to height $3\times10^{12}$ this way.
+sits exactly on $\re(s)=\tfrac12$. The argument principle makes this
+quantitative: for the rectangle $\Omega=\{0.1<\re s<0.9,\ |\im s|<60\}$, the
+winding number around $\partial\Omega$---sampled at $400$ points per side and
+evaluated at $25$-digit precision---returns $26.00000$ for $\zeta$ and
+$44.00000$ for $L(\cdot,\chi_{-3})$, with $\min|f|$ on the contour bounded
+below by $0.27$ and $0.12$ respectively. These match the $2\times 13$ and
+$2\times 22$ on-line zeros located independently by sign changes
+(cross-checked for $\zeta$ against the standard count), which is consistent
+with every zero of both functions in $\Omega$ being simple and on
+$\re(s)=\tfrac12$.
+
+We are deliberate about the status of this computation. It is a numerical
+verification at high precision, not a certified proof: a fully rigorous
+version requires interval arithmetic with adaptive refinement, guaranteeing
+that no phase change is missed between consecutive contour samples. That is
+exactly the machinery Platt and Trudgian~\cite{PlattTrudgian2021} deploy in
+verifying the Riemann hypothesis to height $3\times10^{12}$ by Turing's
+method. What is offered here is the same argument in miniature, at a
+precision that leaves the integer counts unambiguous, but without the
+certification that would license the word ``proof''.
 
 \begin{figure}[t]
 \centering
