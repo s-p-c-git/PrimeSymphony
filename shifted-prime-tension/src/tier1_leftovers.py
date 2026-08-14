@@ -9,8 +9,14 @@ Tier-1 Leftovers — reproducible script (completes the Tier-1 deep dives).
        normalisation (~1.24 = 1/sum-over-support).
 
   LO4: the tension-fraction sum check.
-       Sum_q frac(spf(p+2)=q) over odd primes q, plus the twin-right fraction,
-       converges to 1. Verified: 0.9027 (q<2000) + 0.0931 (twin) = 0.9959 -> 1.
+       Sum_q frac(spf(p+2)=q) over odd primes q converges to 1 ON ITS OWN.
+       By Brun's theorem the twin primes have density zero among the primes, so
+       they contribute nothing asymptotically -- the earlier framing (sum +
+       twin fraction -> 1) was a finite-N coincidence. Convergence is slow: the
+       summand is ~ 1/(q log q) and the tail beyond Q is ~ 2exp(-gamma)C_2/log Q
+       with 2exp(-gamma)C_2 = 0.74131... Partial sums 0.9027 (q<2e3), 0.9393
+       (q<2e5), 0.9450 (q<5e5); adding the predicted tail gives 1.0001, 0.9999,
+       0.9999.
 
 Self-contained. Runtime ~90s at N=5e6.
 """

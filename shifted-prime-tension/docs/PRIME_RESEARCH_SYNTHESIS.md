@@ -160,13 +160,22 @@ normalisation, never a wrong model — the shape was correct from the start. (Th
 live instance of the diagnostic discipline: distinguish constant-factor (normalisation) from
 shape (model) errors.)
 
-## B4. LEFTOVER LO4 — Sum-to-(1 − twin-fraction) Check (verified)
+## B4. LEFTOVER LO4 — Sum-to-1 Check (proved)
 
-**RESULT.** Σ_q frac(spf(p+2)=q) over odd primes q, plus the twin-right fraction, → 1:
-  theoretical sum (q<2000) = 0.9027, twin-right fraction = 0.0931, total = 0.9959 → 1.
-The small residual is the slow tail of the singular series (converges like the prime-reciprocal
-sum). This confirms the DD1 formula is a complete probability distribution over the ceiling
-prime q, with the twin primes accounting for the complementary mass.
+**RESULT.** Σ_q frac(spf(p+2)=q) over odd primes q → 1 **on its own**. By Brun's theorem
+the twin primes have density O(1/log x) among the primes, hence density zero, so they
+contribute nothing asymptotically.
+
+**Correction.** The earlier framing — sum (0.9027) + twin fraction (0.0931) = 0.9959 → 1 —
+was wrong, not merely incomplete: it read a finite-N coincidence as the asymptotic. The
+twin term does not belong in the identity.
+
+Convergence is slow. With P(q) = ∏_{3≤r<q}(r−2)/(r−1), Mertens over the odd primes plus the
+twin-prime product C₂ gives P(q) ~ 2e^{−γ}C₂/log q with 2e^{−γ}C₂ = 0.74131…, so the summand
+is ≍ 1/(q log q) and the tail beyond Q is ~ 0.74131/log Q. Partial sums to q < 2×10³, 2×10⁵,
+5×10⁵ are 0.9027, 0.9393, 0.9450; adding the predicted tail gives 1.0001, 0.9999, 0.9999.
+
+This confirms the DD1 formula is a complete probability distribution over the ceiling prime q.
 
 ═══════════════════════════════════════════════════════════════════════
 PART C — STANDING NEXT-EXPERIMENT (for the next session)

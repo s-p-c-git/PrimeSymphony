@@ -72,8 +72,9 @@ existing entries. Show me the diff first.
 ```
 Stage the shifted-prime-tension/ directory and any top-level README changes.
 Write a clear, conventional commit message summarising the addition: the
-classification scripts, FFT spectral verification, the rigorous Turing's-method
-box, the MCMC density fit, and the Newton pipeline. Show me the full diff and the
+classification scripts, FFT spectral verification, the Turing's-method box
+(high-precision numerical, not a proof), the MCMC density fit, and the Newton
+pipeline. Show me the full diff and the
 proposed commit message. Do NOT commit or push yet — wait for my explicit go-ahead.
 ```
 

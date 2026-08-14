@@ -1,8 +1,8 @@
 # Shifted-Prime Tension: Classification and Spectral Verification
 
 Computational companion to the paper *"The Shifted-Prime Smallest Factor
-Function: Classification via Quadratic Field Splitting and Dirichlet Series
-Decomposition."*
+Function: A Computational Tour of Tension, Quadratic Splitting, and the
+Explicit Formula."*
 
 This project studies the **k-tension function** `T_k(p) = 1/spf(p+k)` (spf =
 smallest prime factor) over odd primes `p`, and the partition of primes into
@@ -16,15 +16,16 @@ classes `S_k(q) = {p : spf(p+k) = q}`.
 | Period-2q law in even k (period 6 for q=3) | Proved | `step1` |
 | Canonical k=2: limit orphans = primes splitting in `Z[ω]` | Proved | `step0` |
 | Dirichlet decomposition `T_k(s) = Σ_q (1/q) Σ_χ c(q,χ) log L(s,χ) + G(s)` | Proved | (paper) |
-| **All zeros of ζ(s) and L(s,χ₋₃) with \|Im s\|<60 on Re(s)=1/2** | **Proved (Turing's method)** | `step4` |
+| Zero counts for ζ(s) and L(s,χ₋₃) with \|Im s\|<60 consistent with all zeros on Re(s)=1/2 | Verified numerically (25-digit, adaptive) | `step4`, `step4b` |
 | FFT spectrum of error term matches both zero families (15/15 peaks) | Verified | `step3` |
 | Density `π_O/π → 1/2`, decay exponent δ ≈ 0.51 (consistent with GRH) | Verified | `step2` |
 | Primes→zeros pipeline: FFT seeds → Newton → exact ordinates | Demonstrated | `step5` |
 
 **Scope note.** This work does **not** prove the Riemann Hypothesis and makes no
-claim toward it. The Turing's-method result is a rigorous but *bounded*
-verification (|Im s| < 60), exactly the methodology Platt–Trudgian (2021) applied
-at scale to ζ(s) alone. The contribution is the systematic shifted-prime
+claim toward it. The Turing's-method result is a bounded, high-precision
+*numerical* verification (|Im s| < 60) — **not a certified proof**.
+Platt–Trudgian (2021) apply the same argument at vast scale **with interval
+arithmetic**, which is what makes theirs certified and this one not. The contribution is the systematic shifted-prime
 classification and the Dirichlet decomposition, positioned as a variant of the
 Alladi (1977) smallest-prime-factor program.
 
@@ -38,7 +39,7 @@ handedness results). Reproduced at N = 5×10⁶; verified, no maths altered.
 | **DD1** — singular-series tension law | `frac(spf(p+2)=q) = (1/(q−1))·∏_{3≤r<q}(r−2)/(r−1)`, a Hardy–Littlewood singular series (measured/predicted within ~1% over 348,510 primes) | Proved (elementary) | `tier1_deep_dives` |
 | **DD2** — exactly-one-maximum / handedness | every isolated prime has `spf=3` on **exactly one** side; the side is fixed by `p mod 3` (right-handed if `p≡1`, left-handed if `p≡2`). Both-at-3 and neither-at-3 are impossible | Proved (elementary) | `tier1_deep_dives` |
 | **LO3** — free-side distribution | the non-forced side follows the DD1 series with the `r=3` factor removed and renormalised; shape exact (residual <1.5%), prefactor ≈1.24 is pure normalisation | Verified | `tier1_leftovers` |
-| **LO4** — sum check | `Σ_q frac(spf(p+2)=q)` + twin fraction → 1 (measured `0.9027 + 0.0931 = 0.9959`, slow tail) | Verified | `tier1_leftovers` |
+| **LO4** — sum check | `Σ_q frac(spf(p+2)=q) = 1` on its own; twins have density zero (Brun), so contribute nothing asymptotically. Slow tail ~`0.74131/log Q`; partial sums `0.9027`/`0.9393`/`0.9450` plus predicted tail give `1.0001`/`0.9999`/`0.9999` | Proved (elementary) | `tier1_leftovers` |
 
 For the standing framing, guardrails (ESTABLISHED / OPEN / SPECULATIVE), and the
 full six-lens synthesis, see [`docs/PRIME_RESEARCH_CONTEXT.md`](docs/PRIME_RESEARCH_CONTEXT.md)
@@ -75,7 +76,7 @@ python3 step2_density_mcmc.py
 python3 step3_fft_spectrum.py
 #   Expected: all top-15 FFT peaks match a zeta or L(chi-3) zero; figure saved.
 
-# Step 4 — RIGOROUS Turing's-method box (the key theorem)
+# Step 4 — Turing's-method box, high-precision numerical (§5; not a proof)
 python3 step4_turing_box.py
 #   Expected: winding 26.00000 (zeta) and 44.00000 (L(chi-3));
 #             mpmath.nzeros(60)=13 cross-check; heatmap saved.
