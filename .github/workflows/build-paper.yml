@@ -71,6 +71,34 @@ jobs:
           file main.pdf | grep -q 'PDF document' || { echo "::error::main.pdf is not a valid PDF"; exit 1; }
           echo "PDF is valid."
 
+      - name: Retracted-claim language guard
+        run: |
+          echo "=== Language Guard (retracted claims must not return) ==="
+          # Whitespace normalisation is REQUIRED: a plain line-oriented grep gives
+          # false negatives on phrases LaTeX wraps across source lines. That is
+          # exactly what defeated the original audit.
+          NORM=$(tr '\n' ' ' < main.tex | tr -s ' ')
+
+          FAIL=0
+          check_absent() {
+            if printf '%s' "$NORM" | grep -qF "$1"; then
+              echo "::error::retracted claim reintroduced: $1"
+              FAIL=1
+            fi
+          }
+          check_absent "We make this rigorous"
+          check_absent "special case of a general identity of Chavez"
+          check_absent "2023 decomposition of Chavez"
+          check_absent "Certified zero count"
+
+          if ! printf '%s' "$NORM" | grep -qF "certification that would license"; then
+            echo "::error::rigor caveat missing from main.tex"
+            FAIL=1
+          fi
+
+          [ "$FAIL" -eq 0 ] || exit 1
+          echo "PASS: no retracted claims; rigor caveat present."
+
       - name: arXiv compliance checks
         run: |
           echo "=== arXiv Submission Quality Checks ==="
